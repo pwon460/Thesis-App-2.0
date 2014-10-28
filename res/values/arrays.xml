@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="colorArray">
+        <item>White on Black</item>
+        <item>Black on White</item>
+        <item>White on Purple</item>
+        <item>Yellow on Black</item>
+    </string-array>
+    <string-array name="colorValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="textSizeArray">
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+    </string-array>
+    <string-array name="textSizeValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="mainHandArray">
+        <item>Right-Handed</item>
+        <item>Left-Handed</item>
+    </string-array>
+    <string-array name="mainHandValues">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="inverseColorArray">
+        <item>Off</item>
+        <item>On</item>
+    </string-array>
+    <string-array name="inverseColorValues">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="numIndexBtnArray">
+        <item>Eight</item>
+        <item>Nine</item>
+        <item>Ten</item>
+        <item>Eleven</item>
+        <item>Twelve</item>
+    </string-array>
+    <string-array name="numIndexBtnValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="maxListItemsArray">
+        <item>Six</item>
+        <item>Seven</item>
+        <item>Eight</item>
+        <item>Nine</item>
+        <item>Ten</item>
+    </string-array>
+    <string-array name="maxListItemsValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+</resources>
