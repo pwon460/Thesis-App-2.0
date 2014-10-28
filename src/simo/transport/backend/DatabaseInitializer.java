@@ -27,6 +27,7 @@ public class DatabaseInitializer {
 		BufferedReader reader = null;
 		String content = null;
 		try {
+			Log.d("DatabaseInitializer", "Start to insert stop information");
 			reader = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
 			db.beginTransaction();
 			while ((content = reader.readLine()) != null) {
@@ -46,6 +47,7 @@ public class DatabaseInitializer {
 			}
 			db.endTransaction();
 			reader.close();
+			Log.d("DatabaseInitializer", "Finish inserting stop information");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -83,6 +85,7 @@ public class DatabaseInitializer {
 		BufferedReader reader = null;
 		String content = null;
 		try {
+			Log.d("DatabaseInitializer", "Start to insert route order information");
 			reader = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
 			db.beginTransaction();
 			while ((content = reader.readLine()) != null) {
@@ -102,6 +105,7 @@ public class DatabaseInitializer {
 			}
 			db.endTransaction();
 			reader.close();
+			Log.d("DatabaseInitializer", "Finish inserting route order information");
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
@@ -140,6 +144,7 @@ public class DatabaseInitializer {
 		BufferedReader reader = null;
 		String content = null;
 		try {
+			Log.d("DatabaseInitializer", "Start to insert route names");
 			reader = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
 			db.beginTransaction();
 			while ((content = reader.readLine()) != null) {
@@ -159,6 +164,7 @@ public class DatabaseInitializer {
 			}
 			db.endTransaction();
 			reader.close();
+			Log.d("DatabaseInitializer", "Finish inserting route names");
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -197,6 +203,7 @@ public class DatabaseInitializer {
 		BufferedReader reader = null;
 		String content = null;
 		try {
+			Log.d("DatabaseInitializer", "Start to insert calendar information");
 			reader = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
 			db.beginTransaction();
 			while ((content = reader.readLine()) != null) {
@@ -217,6 +224,7 @@ public class DatabaseInitializer {
 			}
 			db.endTransaction();
 			reader.close();
+			Log.d("DatabaseInitializer", "Finish inserting calendar information");
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -256,6 +264,7 @@ public class DatabaseInitializer {
 		BufferedReader reader = null;
 		String content = null;
 		try {
+			Log.d("DatabaseInitializer", "Start to insert trip information");
 			reader = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
 			db.beginTransaction();
 			while ((content = reader.readLine()) != null) {
@@ -276,6 +285,7 @@ public class DatabaseInitializer {
 			}
 			db.endTransaction();
 			reader.close();
+			Log.d("DatabaseInitializer", "Finish inserting trip information");
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -314,6 +324,7 @@ public class DatabaseInitializer {
 		BufferedReader reader = null;
 		String content = null;
 		try {
+			Log.d("DatabaseInitializer", "Start to insert days variatin info");
 			reader = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
 			db.beginTransaction();
 			while ((content = reader.readLine()) != null) {
@@ -334,6 +345,7 @@ public class DatabaseInitializer {
 			}
 			db.endTransaction();
 			reader.close();
+			Log.d("DatabaseInitializer", "Finish inserting to daysVariation information");
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -344,6 +356,7 @@ public class DatabaseInitializer {
 		BufferedReader reader = null;
 		String content = null;
 		try {
+			Log.d("DatabaseInitializer", "Update exception info");
 			reader = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
 			db.beginTransaction();
 			db.execSQL("DROP TABLE IF EXISTS EXCEPTION");
@@ -365,6 +378,7 @@ public class DatabaseInitializer {
 			}
 			db.endTransaction();
 			reader.close();
+			Log.d("DatabaseInitializer", "Finish updating exception info");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -441,6 +455,7 @@ public class DatabaseInitializer {
 		    rail_db.close();
 		    ferry_db.close();
 		    tram_db.close();
+		    Log.d("DatabaseInitializer", "populated initial database");
 		    // delete zip file after update to save memory
 	    	try{
 	    		// initial database is always latest version so patch file is not needed.
@@ -449,7 +464,10 @@ public class DatabaseInitializer {
 	    		String timestamp = formatter.format(new Date(file.lastModified()));
 		    	FileOutputStream fos = context.openFileOutput("simo.patch." + timestamp, Context.MODE_PRIVATE);
 		    	fos.close();
+		    	Log.d("DatabaseInitializer", "create simo.patch flag file");
+		    	String name = file.getName();
 	    		file.delete();
+	    		Log.d("DatabaseInitializer", "delete " + name);
 			}catch(Exception e){
 	    		e.printStackTrace(); 
 	    	}
@@ -467,6 +485,7 @@ public class DatabaseInitializer {
 		SQLiteDatabase ferry_db = new MySQLiteHelper(context, MySQLiteHelper.FERRY_DATABASE).getWritableDatabase();
 		SQLiteDatabase tram_db = new MySQLiteHelper(context, MySQLiteHelper.TRAM_DATABASE).getWritableDatabase();
 		try {
+			Log.d("DatabaseInitializer", "update exception data");
 			// String file = "/Users/cse/Thesis/data/initial/init.zip";
 		    ZipFile zipFile = new ZipFile(file);
 		    Enumeration<? extends ZipEntry> entries = zipFile.entries();
@@ -493,6 +512,7 @@ public class DatabaseInitializer {
 		    rail_db.close();
 		    ferry_db.close();
 		    tram_db.close();
+		    Log.d("DatabaseInitializer", "Finish to update Exception data");
 		    // delete zip file after update to save memory
 	    	try{
 		    	// create flag file and name it with simo.yyyyMMdd
@@ -501,6 +521,7 @@ public class DatabaseInitializer {
 		    	FileOutputStream fos = context.openFileOutput("simo." + timestamp, Context.MODE_PRIVATE);
 		    	fos.close();
 	    		file.delete();
+	    		Log.d("DatabaseInitizlier", "generate flag file for weekly data");
 			}catch(Exception e){
 	    		e.printStackTrace(); 
 	    	}
@@ -520,6 +541,7 @@ public class DatabaseInitializer {
 
 		// Insert stop information to the STOPS
 		try {
+			Log.d("DatabaseInitializer", "start to apply patch");
 			// String file = "/Users/cse/Thesis/data/initial/init.zip";
 		    ZipFile zipFile = new ZipFile(file);
 		    Enumeration<? extends ZipEntry> entries = zipFile.entries();
@@ -614,6 +636,7 @@ public class DatabaseInitializer {
 		    rail_db.close();
 		    ferry_db.close();
 		    tram_db.close();
+		    Log.d("DatabaseInitializer", "Finish to apply patch to database");
 		    // delete zip file after update to save memory
 	    	try{
 		    	// create flag file and name it with simo.patch.yyyyMMdd
@@ -622,6 +645,7 @@ public class DatabaseInitializer {
 		    	FileOutputStream fos = context.openFileOutput("simo.patch." + timestamp, Context.MODE_PRIVATE);
 		    	fos.close();
 	    		file.delete();
+	    		Log.d("DatabaseInitializer", "Deleted downloaded pathc file and generates simo.patch file");
 			}catch(Exception e){
 	    		e.printStackTrace(); 
 	    	}
